@@ -1,34 +1,33 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+
+import history from 'history'
 
 import { Wrapper, Information, Illustration, Form } from "./styles.js";
 
+import Logo from "../../assets/logo.png";
 import Illu from "../../assets/illustration.png";
 
 import api from "../../config/api";
 
 export default function Index() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const history = useHistory();
-
-  function submitRequest(e) {
+  function submitRegister(e) {
     e.preventDefault();
-    const information = { email, password };
+    const informations = { name, email, password };
 
     api
-      .post("/auth/authenticate", information)
+      .post("/auth/register", informations)
       .then((response) => {
-        localStorage.setItem("name", response.data.user.name);
-        localStorage.setItem("token", `Bearer ${response.data.token}`);
-
-        history.push("/manager");
+        window.location.reload();
       })
       .catch((response) => {
         alert("erro na requisição");
       });
   }
+
   return (
     <>
       <Wrapper>
@@ -36,21 +35,25 @@ export default function Index() {
           <img src={Illu} />
         </Illustration>
         <Information>
-          <Form onSubmit={submitRequest}>
+          <Form onSubmit={submitRegister}>
             <a></a>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Digite seu nome"
+            />
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              type="email"
               placeholder="Digite seu email"
             />
             <input
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              type="password"
               placeholder="Digite sua senha"
             />
-            <input type="submit" value="Enviar" />
+            <input onClick={submitRegister} type="submit" value="Enviar" />
             <a>Esqueceu seu ID ?</a>
           </Form>
         </Information>

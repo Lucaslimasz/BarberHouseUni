@@ -17,7 +17,7 @@ export const Information = styled.div`
   flex-direction: column;
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
   padding: 0 10px;
 
   display: flex;
