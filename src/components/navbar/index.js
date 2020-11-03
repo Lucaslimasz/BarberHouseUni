@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import { Container, Limit } from "./styles";
 
@@ -26,6 +26,7 @@ export default function Navbar() {
             Seja bem vindo, <b>{nameuser}</b>
           </div>
           <ul>
+            <li><Link to="/confirmed">Agendas confirmadas</Link></li>
             <li>Extrato Mensal</li>
             <li>Agendas finalizadas</li>
             <li onClick={Logout}>Sair</li>

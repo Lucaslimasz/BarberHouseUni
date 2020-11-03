@@ -1,16 +1,10 @@
 import styled from "styled-components";
 
-import Bg from "../../assets/bg.jpg";
-
 export const Wrapper = styled.section`
   width: 100%;
   height: 100vh;
 
   display: flex;
-
-  background-image: url(${Bg});
-  background-position: center;
-  background-size: cover;
 `;
 
 export const Information = styled.div`
@@ -23,37 +17,37 @@ export const Information = styled.div`
   flex-direction: column;
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
   padding: 0 10px;
 
   display: flex;
   flex-direction: column;
-  a {
+  a{
     color: #fff;
     text-align: center;
     font-size: 18px;
     margin: 10px 0;
   }
 
-  input {
-    width: 380px;
-    height: 55px;
+  input{
+    width: 420px;
+    height: 65px;
     font-size: 20px;
     padding-left: 15px;
     border-radius: 10px;
     color: #444;
     margin: 10px 0;
   }
-  input[type="submit"] {
+  input[type="submit"]{
     font-size: 24px;
     font-weight: bold;
     padding: 0;
     cursor: pointer;
-    background: #ff9000;
+    background: var(--laranja-color);
     color: #000;
-    transition: opacity 0.2s ease;
-    &:hover {
-      opacity: 0.9;
+    transition: opacity .2s ease;
+    &:hover{
+      opacity: .9;
     }
   }
 `;
@@ -67,7 +61,7 @@ export const Illustration = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  img {
+  img{
     width: 570px;
     display: flex;
     justify-content: flex-end;

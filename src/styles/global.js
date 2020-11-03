@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import Bg from '../assets/bg.jpg';
+
 
 export default createGlobalStyle`
     *{  
@@ -12,9 +12,7 @@ export default createGlobalStyle`
     }
 
     body{
-        background-image: url(${Bg});
-        background-position: center;
-        background-size: cover;
+        background: #FFFFFF;
     }
     a{
         text-decoration: none;

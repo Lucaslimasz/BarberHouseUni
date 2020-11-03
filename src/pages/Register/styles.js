@@ -1,10 +1,14 @@
 import styled from "styled-components";
+import Bg from "../../assets/bg.jpg";
 
 export const Wrapper = styled.section`
   width: 100%;
   height: 100vh;
 
   display: flex;
+  background-image: url(${Bg});
+  background-position: center;
+  background-size: cover;
 `;
 
 export const Information = styled.div`
@@ -65,5 +69,12 @@ export const Illustration = styled.div`
     width: 570px;
     display: flex;
     justify-content: flex-end;
+  }
+`;
+
+export const Options = styled.div`
+  margin: auto;
+  >a{
+    margin: 0 5px;
   }
 `;

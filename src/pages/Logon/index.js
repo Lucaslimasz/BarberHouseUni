@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import { Wrapper, Information, Illustration, Form } from "./styles.js";
 
@@ -21,12 +21,12 @@ export default function Index() {
       .post("/auth/authenticate", information)
       .then((response) => {
         localStorage.setItem("name", response.data.user.name);
-        localStorage.setItem("token", `Bearer ${response.data.token}`);
+        localStorage.setItem("token", `${response.data.token}`);
 
         history.push("/manager");
       })
       .catch((response) => {
-        alert("erro na requisição");
+        alert("Login ou Senha incorreta! Tente novamente.");
       });
   }
   return (
@@ -51,7 +51,7 @@ export default function Index() {
               placeholder="Digite sua senha"
             />
             <input type="submit" value="Enviar" />
-            <a>Esqueceu seu ID ?</a>
+            <Link to="/register">Ainda não possui uma conta ?</Link>
           </Form>
         </Information>
       </Wrapper>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-import history from 'history'
+import {useHistory, Link} from 'react-router-dom'
 
-import { Wrapper, Information, Illustration, Form } from "./styles.js";
+import { Wrapper, Information, Illustration, Form, Options } from "./styles.js";
 
 import Logo from "../../assets/logo.png";
 import Illu from "../../assets/illustration.png";
@@ -14,6 +14,8 @@ export default function Index() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const history = useHistory();
+
   function submitRegister(e) {
     e.preventDefault();
     const informations = { name, email, password };
@@ -21,7 +23,7 @@ export default function Index() {
     api
       .post("/auth/register", informations)
       .then((response) => {
-        window.location.reload();
+        history.push('/')
       })
       .catch((response) => {
         alert("erro na requisição");
@@ -54,7 +56,11 @@ export default function Index() {
               placeholder="Digite sua senha"
             />
             <input onClick={submitRegister} type="submit" value="Enviar" />
-            <a>Esqueceu seu ID ?</a>
+            <Options>
+              <a>Esqueceu seu ID ?</a>
+              <a>|</a>
+              <Link to="/">Já possui uma conta ?</Link>
+            </Options>
           </Form>
         </Information>
       </Wrapper>
