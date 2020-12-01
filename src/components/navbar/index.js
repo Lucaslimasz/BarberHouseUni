@@ -26,8 +26,8 @@ export default function Navbar() {
             Seja bem vindo, <b>{nameuser}</b>
           </div>
           <ul>
+            <li><Link to="/manager">Solicitações</Link></li>
             <li><Link to="/confirmed">Agendas confirmadas</Link></li>
-            <li>Extrato Mensal</li>
             <li>Agendas finalizadas</li>
             <li onClick={Logout}>Sair</li>
           </ul>

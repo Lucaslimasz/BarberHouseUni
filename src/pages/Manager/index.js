@@ -19,9 +19,11 @@ import {
 
 export default function Manager() {
   const [informations, setInformations] = useState([]);
+  const [token, setToken] = useState();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+     setToken(localStorage.getItem("token"));
+
     api
       .get("/create/solicitations", {
         headers: {
@@ -29,12 +31,16 @@ export default function Manager() {
         },
       })
       .then((response) => {
-        setInformations(response.data);
+        setInformations(response.data); 
       });
-  }, []);
+
+  }, [token]);
 
   function AcceptedSolicitation(_id) {
-    const token = localStorage.getItem("token");
+
+    console.log(_id);
+    console.log(token);
+
 
     api
       .post(`/create/accepted/${_id}`, {
@@ -49,8 +55,6 @@ export default function Manager() {
       .catch((response) => {
         console.log(response);
       });
-
-      console.log(_id)
   }
 
   function RemoveSolicitation(_id) {
