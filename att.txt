@@ -1,0 +1,8 @@
+
+- Integração com o google mapa
+- Melhorias no layout
+- Login com Facebook/Google
+- Recuperação de senha
+- Extrato do mês em R$ 
+- Pagamento
+- Desenvolvimento do aplicativo mobile

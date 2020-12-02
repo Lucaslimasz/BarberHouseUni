@@ -28,7 +28,7 @@ export default function Navbar() {
           <ul>
             <li><Link to="/manager">Solicitações</Link></li>
             <li><Link to="/confirmed">Agendas confirmadas</Link></li>
-            <li>Agendas finalizadas</li>
+            <li><Link to="/Accepted">Agendas finalizadas</Link></li>
             <li onClick={Logout}>Sair</li>
           </ul>
         </Limit>
