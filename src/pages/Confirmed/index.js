@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Moment from 'moment';
+import Moment from "moment";
 
 import Navbar from "../../components/navbar";
 
@@ -47,19 +47,22 @@ export default function Confirmed() {
       });
   }
 
-  function FinishSolicitation(_id){
-    const token = localStorage.getItem('token');
+  function FinishSolicitation(_id) {
+    const token = localStorage.getItem("token");
 
-    api.post(`/create/finished/${_id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then(() => {
-      alert('Finalizado com sucesso!');
-      window.location.reload();
-    }).catch(() => {
-      alert('error')
-    })
+    api
+      .delete(`/create/accepted/${_id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        alert("Serviço finalizado!");
+        window.location.reload();
+      })
+      .catch(() => {
+        alert("error");
+      });
   }
 
   return (
@@ -100,8 +103,12 @@ export default function Confirmed() {
                   {information.message}
                 </p>
               </Information>
-              <Trash onClick={() => RemoveSolicitation(information._id)}>x</Trash>
-              <Finish onClick={() => FinishSolicitation(information._id)}>Finalizar</Finish>
+              <Trash onClick={() => RemoveSolicitation(information._id)}>
+                x
+              </Trash>
+              <Finish onClick={() => FinishSolicitation(information._id)}>
+                Finalizar
+              </Finish>
             </Item>
           ))}
         </Items>
